@@ -14,7 +14,25 @@
             <h1>{{ $post->title }}</h1>
             <p>{{ $post->body }}</p>
             <p>{{ $post->updated_at }}</p>
-          </div><!-- /.post -->
+            @if($post->likes()->where('user_id', Auth::id())->exists())
+              <div class="like">
+                <form action="/post/{{ $post->id }}/unlike" method="POST">
+                  @csrf
+                  <button id="like">いいね解除</button>
+                  <p>いいね数:{{ $post->likes()->count() }}</p>
+                </form>
+              </div><!-- /.like -->
+            @else
+              <div class="like">
+                <form action="/post/{{ $post->id }}/like" method="POST">
+                  @csrf
+                    <button id="like">いいね</button>
+                    <p>いいね数:{{ $post->likes()->count() }}</p>
+                </form>
+              </div><!-- /.like -->
+            @endif
+            </div><!-- /.post -->
+          <br>
       <a href="/posts">[back]</a>
     </body>
 </html>

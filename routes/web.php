@@ -16,10 +16,12 @@ use App\Http\Controllers\PostController;
 
 Route::controller(PostController::class)->group(function (){
   Route::get('/posts', 'index');
+  Route::get('/post/create', 'create');
+  Route::post('/posts', 'store');
   Route::get('/post/{post}', 'show');
   //いいね機能用ルーティング
-  Route::get('/post/{post}/like', 'like')->middleware('auth');
-  Route::get('/post/{post}/unlike', 'unlike')->middleware('auth');
+  Route::post('/post/{post}/like', 'like')->middleware('auth');
+  Route::post('/post/{post}/unlike', 'unlike')->middleware('auth');
 });
 
 Route::get('/dashboard', function () {
