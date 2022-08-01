@@ -43,8 +43,8 @@ class User extends Authenticatable
     ];
 
     //relation
-    public function posts()
+    public function likes()
     {
-        return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Post::class, 'likes')->withTimestamps();
     }
 }

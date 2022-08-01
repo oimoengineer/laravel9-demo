@@ -15,8 +15,9 @@ class Post extends Model
     ];
 
     //relation
-    public function users()
+    public function likes()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'likes')->withTimestamps();
     }
+
 }

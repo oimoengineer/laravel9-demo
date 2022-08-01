@@ -20,6 +20,7 @@
           <br>
           <input type="submit" value="投稿する"/>
         </div><!-- /.form-group -->
+        <a href="/posts">[back]</a>
       </form> 
     </body>
 </html>
