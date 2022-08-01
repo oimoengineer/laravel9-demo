@@ -18,27 +18,21 @@
               <div class="like">
                 <form action="/post/{{ $post->id }}/unlike" method="POST">
                   @csrf
-                  <button id="like" onclick="unLike()">いいね解除</button>
+                  <button id="like">いいね解除</button>
+                  <p>いいね数:{{ $post->likes()->count() }}</p>
                 </form>
               </div><!-- /.like -->
             @else
               <div class="like">
                 <form action="/post/{{ $post->id }}/like" method="POST">
                   @csrf
-                    <button id="like" onclick="Like()">いいね</button>
+                    <button id="like">いいね</button>
+                    <p>いいね数:{{ $post->likes()->count() }}</p>
                 </form>
               </div><!-- /.like -->
             @endif
             </div><!-- /.post -->
           <br>
       <a href="/posts">[back]</a>
-      <script>
-        const Like = () => {
-          console.log('like!');
-        }
-        const unLike = () => {
-          console.log('unlike!');
-        }
-      </script>
     </body>
 </html>
